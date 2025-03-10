@@ -1,0 +1,184 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+
+:root {
+  --background-color: #232323;
+  --text-color: #c8c8c8;
+  --accent-color: #abffae;
+  --alarm-bg-color: #656565;
+  --dark-text: #1e1e1e;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.app-container {
+  min-height: 100vh;
+  padding: 40px 20px;
+  font-family: "Inter", sans-serif;
+  background-color: var(--background-color);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  margin-bottom: 60px;
+}
+
+.title {
+  color: var(--text-color);
+  font-size: 64px;
+}
+
+.settings-button {
+  cursor: pointer;
+}
+
+.new-alarm-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 0 auto;
+  width: 330px;
+  margin-bottom: 40px;
+  cursor: pointer;
+  background-color: var(--accent-color);
+  border: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  user-select: none;
+}
+
+.button-text {
+  color: var(--dark-text);
+  font-size: 24px;
+}
+
+.alarm-list {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  max-width: 330px;
+  margin: 0 auto;
+}
+
+.alarm-item {
+  border-radius: 15px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 82px;
+  background-color: var(--alarm-bg-color);
+}
+
+.alarm-time {
+  color: var(--text-color);
+  font-size: 32px;
+}
+
+.toggle-switch {
+  width: 52px;
+  height: 32px;
+  border: 4px solid var(--accent-color);
+  border-radius: 100px;
+  padding: 2px 4px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.toggle-switch.inactive {
+  justify-content: flex-start;
+}
+
+.switch-handle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+}
+
+/* Responsive styles */
+html,
+body {
+  overscroll-behavior: none;
+}
+
+@media (max-width: 991px) {
+  .title {
+    font-size: 48px;
+  }
+
+  .new-alarm-button,
+  .alarm-item {
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .header {
+    padding: 0 10px;
+  }
+
+  .title {
+    font-size: 36px;
+  }
+
+  .new-alarm-button {
+    padding: 15px;
+    min-height: 60px;
+  }
+
+  .alarm-item {
+    padding: 15px;
+    height: 70px;
+  }
+
+  .alarm-time {
+    font-size: 24px;
+  }
+
+  .settings-button,
+  .toggle-switch {
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 360px) {
+  .app-container {
+    padding: 20px 10px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .alarm-time {
+    font-size: 20px;
+  }
+
+  .new-alarm-button {
+    width: 100%;
+  }
+}

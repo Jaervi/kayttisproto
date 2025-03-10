@@ -1,0 +1,52 @@
+.menu-item {
+  border-radius: 8px;
+  display: flex;
+  width: 100%;
+  padding: 12px 16px;
+  align-items: flex-start;
+  gap: 12px;
+  overflow: hidden;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 16px;
+  color: var(--color-text-primary);
+  font-weight: 400;
+  line-height: 1.4;
+  justify-content: flex-start;
+}
+
+.menu-item-icon {
+  aspect-ratio: 1;
+  object-fit: contain;
+  object-position: center;
+  width: 20px;
+  flex-shrink: 0;
+}
+
+.menu-item:first-child .menu-item-icon {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.menu-item-body {
+  flex: 1;
+  flex-shrink: 1;
+  flex-basis: 0%;
+}
+
+.menu-item-title {
+  align-self: stretch;
+  flex: 1;
+  flex-shrink: 1;
+  flex-basis: 0%;
+  width: 100%;
+}
+
+.menu-item-description {
+  color: var(--color-text-description);
+  font-size: 14px;
+  margin-top: 4px;
+}

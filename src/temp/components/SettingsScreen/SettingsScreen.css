@@ -1,0 +1,78 @@
+.settings-container {
+  background-color: #fff;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 480px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.settings-background {
+  background-color: var(--color-background);
+  display: flex;
+  width: 100%;
+  padding: 27px 16px 116px;
+  flex-direction: column;
+  overflow: hidden;
+  align-items: center;
+}
+
+.settings-header {
+  align-self: flex-start;
+  display: flex;
+  align-items: stretch;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 40px;
+  color: var(--color-text-secondary);
+  font-weight: 400;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.settings-icon {
+  aspect-ratio: 1;
+  object-fit: contain;
+  object-position: center;
+  width: 29px;
+  align-self: flex-start;
+  flex-shrink: 0;
+}
+
+.settings-title {
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: 1px solid #000;
+  flex: 1;
+}
+
+.setup-button {
+  border-radius: 15px;
+  background-color: var(--color-button);
+  align-self: flex-start;
+  margin-top: 49px;
+  margin-left: 16px;
+  padding: 29px 43px;
+  font-family:
+    Roboto,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 24px;
+  color: var(--color-text-secondary);
+  font-weight: 400;
+  line-height: 1;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-item-overlap {
+  z-index: 10;
+  margin-top: -81px;
+  margin-bottom: -23px;
+  max-width: 301px;
+}
