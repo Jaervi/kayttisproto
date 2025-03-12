@@ -1,5 +1,5 @@
 .alarmPageContainer {
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgb(80, 80, 80);
   margin-left: auto;
   margin-right: auto;
   max-width: 480px;
@@ -33,7 +33,7 @@
   flex-direction: column;
   font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
   font-size: 40px;
-  color: rgba(200, 200, 200, 1);
+  color: rgb(133, 133, 133);
   font-weight: 400;
   text-align: center;
 }
@@ -81,7 +81,7 @@
 
 .keyboardPicker {
   border-radius: 28px;
-  background-color: #ece6f0;
+  background-color: #838383;
   margin-top: -103px;
   min-height: 459px;
   width: 100%;
@@ -142,6 +142,8 @@
   text-align: center;
   letter-spacing: 0px;
   line-height: 1;
+  align-self: stretch;
+  margin: auto 0;
 }
 
 .inactiveInputField {

@@ -5,8 +5,15 @@ import SettingsIcon from "../components/icons/SettingsIcon";
 import SunIcon from "../components/icons/SunIcon";
 import "../styles/globals.css";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
-export default function Home() {
+export default function Home( {alarms}) {
+
+
+  const getTimeRange = (time) => {
+    return `${time.start} - ${time.end}`
+  } 
+
   const navigate = useNavigate();
   return (
     <div className="app-container">
@@ -23,10 +30,7 @@ export default function Home() {
       </button>
 
       <div className="alarm-list">
-        <AlarmItem timeRange="6:00 - 7:00" isActive={true} />
-        <AlarmItem timeRange="7:00 - 7:30" isActive={true} />
-        <AlarmItem timeRange="7:30 - 8:15" isActive={true} />
-        <AlarmItem timeRange="8:00 - 8:30" isActive={true} />
+        {alarms.map(x => <AlarmItem id = {x.id} timeRange = {getTimeRange(x)} isActive={true}/>)}
       </div>
     </div>
   );
