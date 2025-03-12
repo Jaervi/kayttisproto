@@ -31,12 +31,7 @@
   width: 100%;
   max-width: 277px;
   flex-direction: column;
-  font-family:
-    Inter,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
   font-size: 40px;
   color: rgba(200, 200, 200, 1);
   font-weight: 400;
@@ -48,23 +43,20 @@
   object-fit: contain;
   object-position: center;
   width: 29px;
+  margin-top: 10px;
+  cursor: pointer;
 }
 
 .headerTitle {
   align-self: flex-end;
-  margin-top: 20px;
+  margin-top: -40px;
 }
 
 .timeLabel {
   margin-top: 99px;
   padding: 24px 24px 0;
   gap: 10px;
-  font-family:
-    Roboto,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
+  font-family: Roboto, -apple-system, Roboto, Helvetica, sans-serif;
   font-size: 12px;
   color: #49454f;
   font-weight: 500;
@@ -78,12 +70,7 @@
   margin-top: 108px;
   padding: 24px 24px 0;
   gap: 10px;
-  font-family:
-    Roboto,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
+  font-family: Roboto, -apple-system, Roboto, Helvetica, sans-serif;
   font-size: 12px;
   color: #49454f;
   font-weight: 500;
@@ -95,15 +82,10 @@
 .keyboardPicker {
   border-radius: 28px;
   background-color: #ece6f0;
-  margin-top: -243px;
+  margin-top: -103px;
   min-height: 459px;
   width: 100%;
-  font-family:
-    Roboto,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
+  font-family: Roboto, -apple-system, Roboto, Helvetica, sans-serif;
 }
 
 .pickerHeader {
@@ -119,7 +101,7 @@
 
 .inputSelection {
   display: flex;
-  margin-top: 20px;
+  margin-top: -20px;
   min-height: 183px;
   width: 100%;
   flex-direction: column;
@@ -132,7 +114,8 @@
 .timeSelector {
   display: flex;
   width: 100%;
-  padding: 0 24px;
+  padding: 0px 24px;
+  padding-bottom: 24px;
   align-items: flex-start;
   justify-content: center;
 }
@@ -216,12 +199,7 @@
   width: 100%;
   flex-direction: column;
   align-items: stretch;
-  font-family:
-    Roboto,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
+  font-family: Roboto, -apple-system, Roboto, Helvetica, sans-serif;
   font-weight: 400;
   white-space: nowrap;
   justify-content: center;
@@ -277,12 +255,7 @@
   margin-right: 24px;
   align-items: flex-start;
   gap: 8px;
-  font-family:
-    Roboto,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
+  font-family: Roboto, -apple-system, Roboto, Helvetica, sans-serif;
   font-size: 14px;
   color: #65558f;
   font-weight: 500;
@@ -345,12 +318,7 @@
   width: 100%;
   padding: 8px 16px 4px;
   overflow: hidden;
-  font-family:
-    Inter,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
   font-size: 16px;
   color: #f3f3f3;
   font-weight: 600;
@@ -377,12 +345,7 @@
   border-radius: 8px;
   width: 100%;
   overflow: hidden;
-  font-family:
-    Inter,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
   font-weight: 400;
   line-height: 1.4;
 }

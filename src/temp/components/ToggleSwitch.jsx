@@ -12,7 +12,7 @@ const ToggleSwitch = ({ isActive: initialState = false }) => {
       className={`toggle-switch ${isActive ? "active" : "inactive"}`}
       onClick={handleToggle}
     >
-      <div className="switch-handle" />
+      <div className={`switch-handle ${isActive ? "active" : "inactive"}`} />
     </div>
   );
 };

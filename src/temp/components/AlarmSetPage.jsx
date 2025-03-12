@@ -1,8 +1,10 @@
 "use client";
 import React from "react";
 import styles from "./AlarmSetPage.module.css";
+import { useNavigate } from "react-router-dom";
 
 const AlarmSetPage = () => {
+  const navigate = useNavigate();
   return (
     <div className={styles.alarmPageContainer}>
       <div className={styles.backgroundContainer}>
@@ -12,16 +14,16 @@ const AlarmSetPage = () => {
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/1a8c7d2f80eb5c331159f8fbffa49259337b415f137e959c4146803f791e9cc9?placeholderIfAbsent=true"
               className={styles.headerIcon}
               alt="Alarm icon"
+              onClick={() => navigate("/")}
             />
             <div className={styles.headerTitle}>New alarm</div>
           </div>
-
-          <div className={styles.timeLabel}>From</div>
 
           <div className={styles.timeLabelUntil}>Until</div>
 
           <div className={styles.keyboardPicker}>
             <div className={styles.pickerHeader}>Enter wake-up period</div>
+            <div className={styles.timeLabel}>From</div>
 
             <div className={styles.inputSelection}>
               <div className={styles.timeSelector}>

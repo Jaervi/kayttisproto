@@ -4,8 +4,10 @@ import AlarmItem from "../components/AlarmItem";
 import SettingsIcon from "../components/icons/SettingsIcon";
 import SunIcon from "../components/icons/SunIcon";
 import "../styles/globals.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
+  const navigate = useNavigate();
   return (
     <div className="app-container">
       <header className="header">
@@ -15,7 +17,7 @@ export default function Home() {
         </div>
       </header>
 
-      <button className="new-alarm-button">
+      <button className="new-alarm-button" onClick={() => navigate("/alarm")}>
         <SunIcon />
         <span className="button-text">New Alarm</span>
       </button>

@@ -14,7 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/settings" element={<SettingsScreen />} />
-          <Route path="/alarmset" element={<AlarmSetPage />} />
+          <Route path="/alarm" element={<AlarmSetPage />} />
         </Routes>
       </Router>
     </div>
