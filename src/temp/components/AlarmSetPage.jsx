@@ -3,8 +3,15 @@ import React from "react";
 import styles from "./AlarmSetPage.module.css";
 import { useNavigate } from "react-router-dom";
 import { Alarms } from "./SettingsScreen/SettingsScreen";
+import { useState } from "react";
 
 const AlarmSetPage = () => {
+  const [fromHour, setFromHour] = useState("08");
+  const [fromMin, setFromMin] = useState("00");
+  const handle = (event, handler) => {
+    event.preventDefault();
+    handler(event.target.value);
+  };
   const navigate = useNavigate();
   return (
     <div className={styles.alarmPageContainer}>
@@ -28,8 +35,15 @@ const AlarmSetPage = () => {
               <div className={styles.timeSelector}>
                 <div className={styles.timeField}>
                   <div className={styles.activeInputField}>
-                    <div className={styles.timeText}>8</div>
-                    <div className={styles.cursor} />
+                    <form>
+                      <input
+                        className={styles.inputForm}
+                        type="text"
+                        value={fromHour}
+                        maxLength={2}
+                        onChange={(e) => handle(e, setFromHour)}
+                      ></input>
+                    </form>
                   </div>
                   <div className={styles.timeLabel}>Hour</div>
                 </div>
@@ -37,7 +51,17 @@ const AlarmSetPage = () => {
                 <div className={styles.separator}>:</div>
 
                 <div className={styles.timeField}>
-                  <div className={styles.inactiveInputField}>00</div>
+                  <div className={styles.activeInputField}>
+                    <form>
+                      <input
+                        className={styles.inputForm}
+                        type="text"
+                        value={fromMin}
+                        maxLength={2}
+                        onChange={(e) => handle(e, setFromMin)}
+                      ></input>
+                    </form>
+                  </div>
                   <div className={styles.timeLabel}>Minute</div>
                 </div>
               </div>
@@ -50,7 +74,6 @@ const AlarmSetPage = () => {
               <div className={styles.timeField}>
                 <div className={styles.activeInputField}>
                   <div className={styles.timeText}>9</div>
-                  <div className={styles.cursor} />
                 </div>
                 <div className={styles.timeLabel}>Hour</div>
               </div>
@@ -58,7 +81,7 @@ const AlarmSetPage = () => {
               <div className={styles.separator}>:</div>
 
               <div className={styles.timeField}>
-                <div className={styles.inactiveInputField}>30</div>
+                <div className={styles.activeInputField}>30</div>
                 <div className={styles.timeLabel}>Minute</div>
               </div>
             </div>
@@ -78,10 +101,20 @@ const AlarmSetPage = () => {
 
           <div className={styles.actionButtons}>
             <div className={styles.secondaryButton}>
-              <div className={styles.buttonContent}>Cancel</div>
+              <div
+                className={styles.buttonContent}
+                onClick={() => console.log("cancel")}
+              >
+                Cancel
+              </div>
             </div>
             <div className={styles.primaryButton}>
-              <div className={styles.buttonContent}>OK</div>
+              <div
+                className={styles.buttonContent}
+                onClick={() => navigate("/")}
+              >
+                OK
+              </div>
             </div>
           </div>
         </div>

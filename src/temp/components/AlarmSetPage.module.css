@@ -295,6 +295,7 @@
   gap: 8px;
   flex: 1;
   height: 100%;
+  cursor: pointer;
 }
 
 .alarmSoundMenu {
@@ -405,4 +406,13 @@
 
 .alarmSoundMenu2 {
   margin-left: 50px;
+}
+
+.inputForm {
+  flex: auto;
+  border: none;
+  background-color: #eaddff;
+  text-align: center;
+  font-size: 42px;
+  max-width: 100px;
 }
