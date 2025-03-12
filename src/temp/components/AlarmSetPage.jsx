@@ -8,9 +8,14 @@ import { useState } from "react";
 const AlarmSetPage = () => {
   const [fromHour, setFromHour] = useState("08");
   const [fromMin, setFromMin] = useState("00");
+  const [untilHour, setUntilHour] = useState("09");
+  const [untilMin, setUntilMin] = useState("30");
   const handle = (event, handler) => {
     event.preventDefault();
     handler(event.target.value);
+  };
+  const handleOK = () => {
+    navigate("/");
   };
   const navigate = useNavigate();
   return (
@@ -73,7 +78,17 @@ const AlarmSetPage = () => {
             <div className={styles.timeSelector}>
               <div className={styles.timeField}>
                 <div className={styles.activeInputField}>
-                  <div className={styles.timeText}>9</div>
+                  <div className={styles.timeText}>
+                    <form>
+                      <input
+                        className={styles.inputForm}
+                        type="text"
+                        value={untilHour}
+                        maxLength={2}
+                        onChange={(e) => handle(e, setUntilHour)}
+                      ></input>
+                    </form>
+                  </div>
                 </div>
                 <div className={styles.timeLabel}>Hour</div>
               </div>
@@ -81,7 +96,17 @@ const AlarmSetPage = () => {
               <div className={styles.separator}>:</div>
 
               <div className={styles.timeField}>
-                <div className={styles.activeInputField}>30</div>
+                <div className={styles.activeInputField}>
+                  <form>
+                    <input
+                      className={styles.inputForm}
+                      type="text"
+                      value={untilMin}
+                      maxLength={2}
+                      onChange={(e) => handle(e, setUntilMin)}
+                    ></input>
+                  </form>
+                </div>
                 <div className={styles.timeLabel}>Minute</div>
               </div>
             </div>
@@ -109,10 +134,7 @@ const AlarmSetPage = () => {
               </div>
             </div>
             <div className={styles.primaryButton}>
-              <div
-                className={styles.buttonContent}
-                onClick={() => navigate("/")}
-              >
+              <div className={styles.buttonContent} onClick={handleOK}>
                 OK
               </div>
             </div>
