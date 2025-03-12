@@ -2,6 +2,7 @@
 import React from "react";
 import styles from "./AlarmSetPage.module.css";
 import { useNavigate } from "react-router-dom";
+import { Alarms } from "./SettingsScreen/SettingsScreen";
 
 const AlarmSetPage = () => {
   const navigate = useNavigate();
@@ -18,8 +19,6 @@ const AlarmSetPage = () => {
             />
             <div className={styles.headerTitle}>New alarm</div>
           </div>
-
-          <div className={styles.timeLabelUntil}>Until</div>
 
           <div className={styles.keyboardPicker}>
             <div className={styles.pickerHeader}>Enter wake-up period</div>
@@ -43,6 +42,7 @@ const AlarmSetPage = () => {
                 </div>
               </div>
             </div>
+            <div className={styles.timeLabelUntil}>Until</div>
           </div>
 
           <div className={styles.inputSelectionUntil}>
@@ -85,35 +85,8 @@ const AlarmSetPage = () => {
             </div>
           </div>
         </div>
-
-        <div className={styles.alarmSoundMenu}>
-          <div className={styles.menuHeader}>Alarm sound</div>
-          <div className={styles.menuSeparator}>
-            <div className={styles.divider} />
-          </div>
-          <div className={styles.menuSection}>
-            <div className={styles.menuItem}>
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/57e45dae4b5af1c85da523030744aff88798a2073022ab61ff139470a5a6b003?placeholderIfAbsent=true"
-                className={styles.menuItemIcon}
-                alt="Selected alarm"
-              />
-              <div className={styles.menuItemBody}>
-                <div className={styles.menuItemTitle}>Alarm 1</div>
-                <div className={styles.menuItemDescription}>Selected</div>
-              </div>
-            </div>
-            <div className={styles.menuItem}>
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/2cb0a6df828835e02fbaeffcdfa6a099872c40b03103bc66581fc207fe910c93?placeholderIfAbsent=true"
-                className={styles.menuItemIcon}
-                alt="Alarm option"
-              />
-              <div className={styles.menuItemBody}>
-                <div className={styles.menuItemTitle}>Alarm 2</div>
-              </div>
-            </div>
-          </div>
+        <div className={styles.alarmSoundMenu2}>
+          <Alarms />
         </div>
       </div>
     </div>

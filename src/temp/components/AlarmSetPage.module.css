@@ -30,6 +30,7 @@
   display: flex;
   width: 100%;
   max-width: 277px;
+  margin-bottom: 50px;
   flex-direction: column;
   font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
   font-size: 40px;
@@ -66,9 +67,9 @@
 }
 
 .timeLabelUntil {
-  z-index: 10;
-  margin-top: 108px;
+  z-index: 20;
   padding: 24px 24px 0;
+  margin-top: -40px;
   gap: 10px;
   font-family: Roboto, -apple-system, Roboto, Helvetica, sans-serif;
   font-size: 12px;
@@ -82,7 +83,6 @@
 .keyboardPicker {
   border-radius: 28px;
   background-color: #ece6f0;
-  margin-top: -103px;
   min-height: 459px;
   width: 100%;
   font-family: Roboto, -apple-system, Roboto, Helvetica, sans-serif;
@@ -401,4 +401,8 @@
 .menuItem:first-child {
   width: 285px;
   max-width: 100%;
+}
+
+.alarmSoundMenu2 {
+  margin-left: 50px;
 }
