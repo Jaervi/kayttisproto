@@ -5,6 +5,7 @@ import "./App.css";
 import SettingsScreen from "./temp/components/SettingsScreen/SettingsScreen";
 import Home from "./temp/components/Home.jsx";
 import AlarmSetPage from "./temp/components/AlarmSetPage.jsx";
+import { AlarmSetPage2 } from "./temp/components/AlarmSetPage.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 
@@ -23,6 +24,7 @@ function App() {
           <Route path="/" element={<Home alarms={alarms}/>} />
           <Route path="/settings" element={<SettingsScreen />} />
           <Route path="/alarm" element={<AlarmSetPage alarms={alarms}/>} />
+          <Route path="/alarm2" element={<AlarmSetPage2 alarms={alarms}/>} />
         </Routes>
       </Router>
     </div>

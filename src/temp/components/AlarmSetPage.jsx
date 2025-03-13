@@ -2,43 +2,173 @@
 import React from "react";
 import styles from "./AlarmSetPage.module.css";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-const AlarmSetPage2 = () => {
-  return (
-    <Form>
-      <Form.Group className={styles.keyboardPicker} controlId="formBasicEmail">
-        <Form.Label className={styles.pickerHeader}>Email address</Form.Label>
-        <div className={styles.timeLabel}>From</div>
-        <div className={styles.inputSelection}>
-          <div className={styles.timeSelector}>
-            <div className={styles.timeField}>
-              <Form.Control className={styles.activeInputField} type="number" />
-            </div>
-          </div>
-          <div className={styles.separator}>:</div>
-          <div className={styles.timeSelector}>
-            <div className={styles.timeField}>
-              <Form.Control className={styles.activeInputField} type="number" />
-            </div>
-          </div>
-        </div>
-        <Form.Text className="text-muted"></Form.Text>
-      </Form.Group>
+export const AlarmSetPage2 = () => {
+  const [fromHour, setFromHour] = useState("08");
+  const [fromMin, setFromMin] = useState("00");
+  const [untilHour, setUntilHour] = useState("09");
+  const [untilMin, setUntilMin] = useState("30");
+  const handle = (event, handler) => {
+    event.preventDefault();
+    handler(event.target.value);
+  };
+  const handleOK = () => {
+    navigate("/");
+  };
+  const navigate = useNavigate();
 
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" />
-      </Form.Group>
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
-    </Form>
+  return (
+    <div className={styles.alarmPageContainer}>
+      <div className={styles.backgroundContainer}>
+        <div className={styles.contentWrapper}>
+          <div className={styles.headerContainer}>
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/1a8c7d2f80eb5c331159f8fbffa49259337b415f137e959c4146803f791e9cc9?placeholderIfAbsent=true"
+              className={styles.headerIcon}
+              alt="Alarm icon"
+              onClick={() => navigate("/")}
+            />
+            <div className={styles.headerTitle}>New alarm</div>
+          </div>
+          <Form>
+            <Form.Group
+              className={styles.keyboardPicker}
+              style={{ paddingTop: "2rem" }}
+              controlId="formBasicEmail"
+            >
+              <Form.Label
+                className={styles.pickerHeader}
+                style={{ paddingLeft: "2rem" }}
+              >
+                Enter wake up period
+              </Form.Label>
+              <div className={styles.timeLabel}>From</div>
+              <div className={styles.timeLabel}>From</div>
+              <div className={styles.inputSelection}>
+                <div
+                  className={styles.timeSelector}
+                  style={{ width: "15rem", display: "flex" }}
+                >
+                  <div className={styles.timeField}>
+                    <Form.Control
+                      className={styles.activeInputField}
+                      type="number"
+                      value={fromHour}
+                      max="23"
+                      min="00"
+                      onChange={(e) => handle(e, setFromHour)}
+                    />
+                    <Form.Text
+                      className={styles.timeLabel}
+                      style={{ marginTop: "10px" }}
+                    >
+                      Hour
+                    </Form.Text>
+                  </div>
+                </div>
+                <div className={styles.separator}>:</div>
+                <div
+                  className={styles.timeSelector}
+                  style={{ width: "15rem", display: "flex" }}
+                >
+                  <div className={styles.timeField}>
+                    <Form.Control
+                      className={styles.activeInputField}
+                      type="number"
+                      value={fromMin}
+                      max="23"
+                      min="00"
+                      onChange={(e) => handle(e, setFromMin)}
+                    />
+                    <Form.Text className={styles.timeLabel}>Minute</Form.Text>
+                  </div>
+                </div>
+              </div>
+              <Form.Label
+                className={styles.timeLabelUntil}
+                style={{ paddingLeft: "2rem" }}
+              >
+                Until
+              </Form.Label>
+              <div className={styles.timeLabel}>Until</div>
+              <div className={styles.inputSelection}>
+                <div
+                  className={styles.timeSelector}
+                  style={{ width: "15rem", display: "flex" }}
+                >
+                  <div className={styles.timeField}>
+                    <Form.Control
+                      className={styles.activeInputField}
+                      type="number"
+                      value={untilHour}
+                      max="23"
+                      min="00"
+                      onChange={(e) => handle(e, setUntilHour)}
+                    />
+                    <Form.Text className={styles.timeLabel}>Hour</Form.Text>
+                  </div>
+                </div>
+                <div className={styles.separator}>:</div>
+                <div
+                  className={styles.timeSelector}
+                  style={{ width: "15rem", display: "flex" }}
+                >
+                  <div className={styles.timeField}>
+                    <Form.Control
+                      className={styles.activeInputField}
+                      type="number"
+                      value={untilMin}
+                      max="23"
+                      min="00"
+                      onChange={(e) => handle(e, setUntilMin)}
+                    />
+                    <Form.Text
+                      className={styles.timeLabel}
+                      style={{ padding: "2rem" }}
+                    >
+                      Minute
+                    </Form.Text>
+                  </div>
+                </div>
+              </div>
+              <div className={styles.actionButtons}>
+                <div className={styles.secondaryButton}>
+                  <div
+                    className={styles.buttonContent}
+                    onClick={() => console.log("cancel")}
+                  >
+                    Cancel
+                  </div>
+                </div>
+                <div className={styles.primaryButton}>
+                  <div className={styles.buttonContent} onClick={handleOK}>
+                    OK
+                  </div>
+                </div>
+              </div>
+            </Form.Group>
+          </Form>
+        </div>
+      </div>
+    </div>
   );
 };
 
 const AlarmSetPage = () => {
+  const [fromHour, setFromHour] = useState("08");
+  const [fromMin, setFromMin] = useState("00");
+  const [untilHour, setUntilHour] = useState("09");
+  const [untilMin, setUntilMin] = useState("30");
+  const handle = (event, handler) => {
+    event.preventDefault();
+    handler(event.target.value);
+  };
+  const handleOK = () => {
+    navigate("/");
+  };
   const navigate = useNavigate();
   return (
     <div className={styles.alarmPageContainer}>
@@ -54,8 +184,6 @@ const AlarmSetPage = () => {
             <div className={styles.headerTitle}>New alarm</div>
           </div>
 
-          <div className={styles.timeLabelUntil}>Until</div>
-
           <div className={styles.keyboardPicker}>
             <div className={styles.pickerHeader}>Enter wake-up period</div>
             <div className={styles.timeLabel}>From</div>
@@ -64,8 +192,15 @@ const AlarmSetPage = () => {
               <div className={styles.timeSelector}>
                 <div className={styles.timeField}>
                   <div className={styles.activeInputField}>
-                    <div className={styles.timeText}>8</div>
-                    <div className={styles.cursor} />
+                    <form>
+                      <input
+                        className={styles.inputForm}
+                        type="text"
+                        value={fromHour}
+                        maxLength={2}
+                        onChange={(e) => handle(e, setFromHour)}
+                      ></input>
+                    </form>
                   </div>
                   <div className={styles.timeLabel}>Hour</div>
                 </div>
@@ -73,19 +208,39 @@ const AlarmSetPage = () => {
                 <div className={styles.separator}>:</div>
 
                 <div className={styles.timeField}>
-                  <div className={styles.inactiveInputField}>00</div>
+                  <div className={styles.activeInputField}>
+                    <form>
+                      <input
+                        className={styles.inputForm}
+                        type="text"
+                        value={fromMin}
+                        maxLength={2}
+                        onChange={(e) => handle(e, setFromMin)}
+                      ></input>
+                    </form>
+                  </div>
                   <div className={styles.timeLabel}>Minute</div>
                 </div>
               </div>
             </div>
+            <div className={styles.timeLabelUntil}>Until</div>
           </div>
 
           <div className={styles.inputSelectionUntil}>
             <div className={styles.timeSelector}>
               <div className={styles.timeField}>
                 <div className={styles.activeInputField}>
-                  <div className={styles.timeText}>9</div>
-                  <div className={styles.cursor} />
+                  <div className={styles.timeText}>
+                    <form>
+                      <input
+                        className={styles.inputForm}
+                        type="text"
+                        value={untilHour}
+                        maxLength={2}
+                        onChange={(e) => handle(e, setUntilHour)}
+                      ></input>
+                    </form>
+                  </div>
                 </div>
                 <div className={styles.timeLabel}>Hour</div>
               </div>
@@ -93,7 +248,17 @@ const AlarmSetPage = () => {
               <div className={styles.separator}>:</div>
 
               <div className={styles.timeField}>
-                <div className={styles.inactiveInputField}>30</div>
+                <div className={styles.activeInputField}>
+                  <form>
+                    <input
+                      className={styles.inputForm}
+                      type="text"
+                      value={untilMin}
+                      maxLength={2}
+                      onChange={(e) => handle(e, setUntilMin)}
+                    ></input>
+                  </form>
+                </div>
                 <div className={styles.timeLabel}>Minute</div>
               </div>
             </div>
@@ -113,52 +278,22 @@ const AlarmSetPage = () => {
 
           <div className={styles.actionButtons}>
             <div className={styles.secondaryButton}>
-              <div className={styles.buttonContent}>Cancel</div>
+              <div
+                className={styles.buttonContent}
+                onClick={() => console.log("cancel")}
+              >
+                Cancel
+              </div>
             </div>
             <div className={styles.primaryButton}>
-              <div className={styles.buttonContent}>OK</div>
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.alarmSoundMenu}>
-          <div className={styles.menuHeader}>Alarm sound</div>
-          <div className={styles.menuSeparator}>
-            <div className={styles.divider} />
-          </div>
-          <div className={styles.menuSection}>
-            <div className={styles.menuItem}>
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/57e45dae4b5af1c85da523030744aff88798a2073022ab61ff139470a5a6b003?placeholderIfAbsent=true"
-                className={styles.menuItemIcon}
-                alt="Selected alarm"
-              />
-              <div className={styles.menuItemBody}>
-                <div className={styles.menuItemTitle}>Alarm 1</div>
-                <div className={styles.menuItemDescription}>Selected</div>
-              </div>
-            </div>
-            <div className={styles.menuItem}>
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/2cb0a6df828835e02fbaeffcdfa6a099872c40b03103bc66581fc207fe910c93?placeholderIfAbsent=true"
-                className={styles.menuItemIcon}
-                alt="Alarm option"
-              />
-              <div className={styles.menuItemBody}>
-                <div className={styles.menuItemTitle}>Alarm 2</div>
+              <div className={styles.buttonContent} onClick={handleOK}>
+                OK
               </div>
             </div>
           </div>
         </div>
+        <div className={styles.alarmSoundMenu2}></div>
       </div>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <AlarmSetPage2 />
     </div>
   );
 };
