@@ -9,7 +9,7 @@
     var pathname = window.location.pathname;
     
     if (!pathname.startsWith("/kayttisproto/index.html")) {
-      var newUrl = "/kayttisproto/index.html" + pathname.replace("/kayttisproto", "");
+      var newUrl = "/kayttisproto" + pathname.replace("/kayttisproto", "");
       window.location.replace(newUrl);
     }
   </script>
