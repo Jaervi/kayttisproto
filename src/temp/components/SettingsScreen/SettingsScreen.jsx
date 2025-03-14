@@ -18,7 +18,7 @@ export const Alarms = ({ style = "" }) => {
         title="Alarm 1"
         description="Selected"
         alarm={true}
-        sound="/Alarm 1.mp3"
+        sound="/kayttisproto/Alarm 1.mp3"
       />
       <MenuItem
         icons={[alarmOffIcon, alarmOnIcon]}
