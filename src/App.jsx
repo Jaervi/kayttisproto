@@ -19,7 +19,7 @@ function App() {
 
   return (
     <div className="app">
-      <Router>
+      <Router basename="/kayttisproto">
         <Routes>
           <Route path="/" element={<Home alarms={alarms}/>} />
           <Route path="/settings" element={<SettingsScreen />} />
