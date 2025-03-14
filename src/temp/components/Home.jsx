@@ -32,7 +32,7 @@ export default function Home({ alarms }) {
 
       <div className="alarm-list">
         {alarms.map((x) => (
-          <AlarmItem id={x.id} timeRange={getTimeRange(x)} />
+          <AlarmItem id={x.id} key={x.id} timeRange={getTimeRange(x)} />
         ))}
       </div>
     </div>

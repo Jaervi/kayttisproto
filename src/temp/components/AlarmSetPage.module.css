@@ -43,9 +43,8 @@
   aspect-ratio: 1;
   object-fit: contain;
   object-position: center;
-  width: 29px;
-  margin-top: 10px;
   cursor: pointer;
+  min-width: 30px;
 }
 
 .headerTitle {

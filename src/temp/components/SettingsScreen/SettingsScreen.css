@@ -33,11 +33,10 @@
   aspect-ratio: 1;
   object-fit: contain;
   object-position: center;
-  width: 29px;
+  min-width: 30px;
   align-self: flex-start;
   flex-shrink: 0;
   cursor: pointer;
-  margin-top: 10px;
 }
 
 .settings-title {

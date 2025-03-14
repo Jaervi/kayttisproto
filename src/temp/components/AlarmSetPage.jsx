@@ -5,23 +5,32 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 export const AlarmSetPage2 = ({ alarms, setAlarms }) => {
   const [fromHour, setFromHour] = useState("08");
   const [fromMin, setFromMin] = useState("00");
   const [untilHour, setUntilHour] = useState("09");
   const [untilMin, setUntilMin] = useState("30");
+  const [minBefore, setMinBefore] = useState("00");
+  const [check, setCheck] = useState(false);
   const handle = (event, handler) => {
     event.preventDefault();
     const newVal = event.target.value;
     handler(Number(newVal) > 9 ? newVal : `0${newVal}`);
   };
   const handleOK = () => {
-    console.log(alarms);
+    const checkStart =
+      Number(minBefore) > Number(untilMin)
+        ? `${Number(untilHour) - 1}:${
+            Number(untilMin) + (60 - Number(minBefore))
+          }`
+        : `${untilHour}:${Number(untilMin) - Number(minBefore)}`;
     setAlarms(
       alarms.concat({
         id: alarms.length,
-        start: `${fromHour}:${fromMin}`,
+        start: check ? checkStart : `${fromHour}:${fromMin}`,
         end: `${untilHour}:${untilMin}`,
       })
     );
@@ -38,6 +47,7 @@ export const AlarmSetPage2 = ({ alarms, setAlarms }) => {
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/1a8c7d2f80eb5c331159f8fbffa49259337b415f137e959c4146803f791e9cc9?placeholderIfAbsent=true"
               className={styles.headerIcon}
               alt="Alarm icon"
+              width="15%"
               onClick={() => navigate("/")}
             />
             <div className={styles.headerTitle}>New alarm</div>
@@ -50,11 +60,13 @@ export const AlarmSetPage2 = ({ alarms, setAlarms }) => {
             >
               <Form.Label
                 className={styles.pickerHeader}
-                style={{ paddingLeft: "2rem" }}
+                style={{ paddingLeft: "2rem", fontSize: 20 }}
               >
                 Enter wake up period
               </Form.Label>
-              <div className={styles.timeLabel}>From</div>
+              <div className={styles.timeLabel} style={{ fontSize: 20 }}>
+                From
+              </div>
               <div className={styles.timeLabel}>From</div>
               <div className={styles.inputSelection}>
                 <div
@@ -72,7 +84,7 @@ export const AlarmSetPage2 = ({ alarms, setAlarms }) => {
                     />
                     <Form.Text
                       className={styles.timeLabel}
-                      style={{ marginTop: "10px" }}
+                      style={{ marginTop: "10px", fontSize: 20 }}
                     >
                       Hour
                     </Form.Text>
@@ -88,17 +100,22 @@ export const AlarmSetPage2 = ({ alarms, setAlarms }) => {
                       className={styles.activeInputField}
                       type="number"
                       value={fromMin}
-                      max="23"
+                      max="59"
                       min="00"
                       onChange={(e) => handle(e, setFromMin)}
                     />
-                    <Form.Text className={styles.timeLabel}>Minute</Form.Text>
+                    <Form.Text
+                      className={styles.timeLabel}
+                      style={{ fontSize: 20 }}
+                    >
+                      Minute
+                    </Form.Text>
                   </div>
                 </div>
               </div>
               <Form.Label
                 className={styles.timeLabelUntil}
-                style={{ paddingLeft: "2rem" }}
+                style={{ paddingLeft: "2rem", fontSize: 20 }}
               >
                 Until
               </Form.Label>
@@ -117,7 +134,12 @@ export const AlarmSetPage2 = ({ alarms, setAlarms }) => {
                       min="00"
                       onChange={({ target }) => setUntilHour(target.value)}
                     />
-                    <Form.Text className={styles.timeLabel}>Hour</Form.Text>
+                    <Form.Text
+                      className={styles.timeLabel}
+                      style={{ fontSize: 20 }}
+                    >
+                      Hour
+                    </Form.Text>
                   </div>
                 </div>
                 <div className={styles.separator}>:</div>
@@ -130,19 +152,42 @@ export const AlarmSetPage2 = ({ alarms, setAlarms }) => {
                       className={styles.activeInputField}
                       type="number"
                       value={untilMin}
-                      max="23"
+                      max="59"
                       min="00"
                       onChange={(e) => handle(e, setUntilMin)}
                     />
                     <Form.Text
                       className={styles.timeLabel}
-                      style={{ padding: "2rem" }}
+                      style={{ padding: "2rem", fontSize: 20 }}
                     >
                       Minute
                     </Form.Text>
                   </div>
                 </div>
               </div>
+              <div style={{ marginTop: -50, paddingLeft: "24px" }}>
+                <Form.Check
+                  style={{ color: check ? "#1e1e1e" : "" }}
+                  type="checkbox"
+                  id="checkbox"
+                  label={`  Choose X minutes before "Until" time`}
+                  onClick={() => setCheck(!check)}
+                />
+                {check && (
+                  <div style={{ paddingTop: 10 }}>
+                    <Form.Control
+                      className={styles.activeInputField}
+                      style={{ width: "38%" }}
+                      type="number"
+                      value={minBefore}
+                      max="59"
+                      min="00"
+                      onChange={(e) => handle(e, setMinBefore)}
+                    />
+                  </div>
+                )}
+              </div>
+              <div style={{ marginBottom: 50 }}></div>
               <div className={styles.actionButtons}>
                 <div className={styles.secondaryButton}>
                   <div

@@ -3,8 +3,8 @@ import React from "react";
 const SettingsIcon = ({ func }) => {
   return (
     <svg
-      width="30"
-      height="30"
+      width="50"
+      height="50"
       viewBox="0 0 30 30"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -22,8 +22,8 @@ const SettingsIcon = ({ func }) => {
 export const InfoIcon = ({ func }) => {
   return (
     <svg
-      height="30"
-      width="30"
+      height="50"
+      width="50"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 202.978 202.978"
       fill="none"

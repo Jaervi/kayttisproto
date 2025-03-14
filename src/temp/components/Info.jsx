@@ -10,6 +10,7 @@ const Info = () => {
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/2318c707ad652091920d1a0a7367862be3ea22846934b6d65572ebc432fa1cb9?placeholderIfAbsent=true"
             className="settings-icon"
             alt="Settings icon"
+            width="15%"
             onClick={() => navigate("/")}
           />
           <div className="settings-title">AI-Wake Info</div>
