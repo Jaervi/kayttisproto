@@ -6,16 +6,25 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-export const AlarmSetPage2 = () => {
+export const AlarmSetPage2 = ({ alarms, setAlarms }) => {
   const [fromHour, setFromHour] = useState("08");
   const [fromMin, setFromMin] = useState("00");
   const [untilHour, setUntilHour] = useState("09");
   const [untilMin, setUntilMin] = useState("30");
   const handle = (event, handler) => {
     event.preventDefault();
-    handler(event.target.value);
+    const newVal = event.target.value;
+    handler(Number(newVal) > 9 ? newVal : `0${newVal}`);
   };
   const handleOK = () => {
+    console.log(alarms);
+    setAlarms(
+      alarms.concat({
+        id: alarms.length,
+        start: `${fromHour}:${fromMin}`,
+        end: `${untilHour}:${untilMin}`,
+      })
+    );
     navigate("/");
   };
   const navigate = useNavigate();
@@ -59,7 +68,7 @@ export const AlarmSetPage2 = () => {
                       value={fromHour}
                       max="23"
                       min="00"
-                      onChange={(e) => handle(e, setFromHour)}
+                      onChange={({ target }) => setFromHour(target.value)}
                     />
                     <Form.Text
                       className={styles.timeLabel}
@@ -106,7 +115,7 @@ export const AlarmSetPage2 = () => {
                       value={untilHour}
                       max="23"
                       min="00"
-                      onChange={(e) => handle(e, setUntilHour)}
+                      onChange={({ target }) => setUntilHour(target.value)}
                     />
                     <Form.Text className={styles.timeLabel}>Hour</Form.Text>
                   </div>
@@ -138,7 +147,7 @@ export const AlarmSetPage2 = () => {
                 <div className={styles.secondaryButton}>
                   <div
                     className={styles.buttonContent}
-                    onClick={() => console.log("cancel")}
+                    onClick={() => navigate("/")}
                   >
                     Cancel
                   </div>

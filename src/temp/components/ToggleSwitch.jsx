@@ -1,12 +1,4 @@
-import React, { useState } from "react";
-
-const ToggleSwitch = ({ isActive: initialState = false }) => {
-  const [isActive, setIsActive] = useState(initialState);
-
-  const handleToggle = () => {
-    setIsActive(!isActive);
-  };
-
+const ToggleSwitch = ({ isActive, handleToggle }) => {
   return (
     <div
       className={`toggle-switch ${isActive ? "active" : "inactive"}`}
