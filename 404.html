@@ -4,17 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Page Not Found</title>
-  <script>
-    // Only redirect if it's not already the index page
-    var pathname = window.location.pathname;
-    
-    if (!pathname.startsWith("/kayttisproto/index.html")) {
-      var newUrl = "/kayttisproto" + pathname.replace("/kayttisproto", "");
-      window.location.replace(newUrl);
-    }
-  </script>
 </head>
 <body>
-  <h1>Redirecting...</h1>
+  <h1>Go back to main page</h1>
+  <a href="/kayttisproto">CLick here</a>
 </body>
 </html>
