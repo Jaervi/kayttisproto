@@ -3,10 +3,7 @@ import React from "react";
 import styles from "./AlarmSetPage.module.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 
 export const AlarmSetPage2 = ({ alarms, setAlarms }) => {
   const [fromHour, setFromHour] = useState("08");
@@ -15,10 +12,14 @@ export const AlarmSetPage2 = ({ alarms, setAlarms }) => {
   const [untilMin, setUntilMin] = useState("30");
   const [minBefore, setMinBefore] = useState("00");
   const [check, setCheck] = useState(false);
-  const handle = (event, handler) => {
+  const handleMin = (event, handler, cur) => {
     event.preventDefault();
     const newVal = event.target.value;
-    handler(Number(newVal) > 9 ? newVal : `0${newVal}`);
+    const num = Number(newVal);
+    handler(num < 60 && num >= 0 ? newVal : cur);
+  };
+  const handleHour = (handler, value, cur) => {
+    handler((value < 24) & (value >= 0) ? value : cur);
   };
   const handleOK = () => {
     const checkStart =
@@ -80,7 +81,9 @@ export const AlarmSetPage2 = ({ alarms, setAlarms }) => {
                       value={fromHour}
                       max="23"
                       min="00"
-                      onChange={({ target }) => setFromHour(target.value)}
+                      onChange={({ target }) =>
+                        handleHour(setFromHour, target.value, fromHour)
+                      }
                     />
                     <Form.Text
                       className={styles.timeLabel}
@@ -102,7 +105,7 @@ export const AlarmSetPage2 = ({ alarms, setAlarms }) => {
                       value={fromMin}
                       max="59"
                       min="00"
-                      onChange={(e) => handle(e, setFromMin)}
+                      onChange={(e) => handleMin(e, setFromMin, fromMin)}
                     />
                     <Form.Text
                       className={styles.timeLabel}
@@ -132,7 +135,9 @@ export const AlarmSetPage2 = ({ alarms, setAlarms }) => {
                       value={untilHour}
                       max="23"
                       min="00"
-                      onChange={({ target }) => setUntilHour(target.value)}
+                      onChange={({ target }) =>
+                        handleHour(setUntilHour, target.value, untilHour)
+                      }
                     />
                     <Form.Text
                       className={styles.timeLabel}
@@ -154,7 +159,7 @@ export const AlarmSetPage2 = ({ alarms, setAlarms }) => {
                       value={untilMin}
                       max="59"
                       min="00"
-                      onChange={(e) => handle(e, setUntilMin)}
+                      onChange={(e) => handleMin(e, setUntilMin, untilMin)}
                     />
                     <Form.Text
                       className={styles.timeLabel}
@@ -182,7 +187,7 @@ export const AlarmSetPage2 = ({ alarms, setAlarms }) => {
                       value={minBefore}
                       max="59"
                       min="00"
-                      onChange={(e) => handle(e, setMinBefore)}
+                      onChange={(e) => handleMin(e, setMinBefore, minBefore)}
                     />
                   </div>
                 )}
