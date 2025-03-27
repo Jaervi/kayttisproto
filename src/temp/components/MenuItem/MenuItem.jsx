@@ -1,46 +1,55 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./MenuItem.css";
-import { useState } from "react";
 
 function MenuItem({
-  icons = [],
   title,
-  description = "",
   className = "",
   alarm = false,
   sound,
+  status,
+  setStatus,
 }) {
-  const [status, setStatus] = useState({ description, icon: icons[0] });
   const [play, setPlay] = useState(false);
-  const audio = new Audio(sound);
-  audio.volume = 0.1;
-  audio.onended = () => setPlay(false);
-  const toggleDescription = (event) => {
+  const audioRef = useRef(null);
+
+  useEffect(() => {
+    audioRef.current = new Audio(sound);
+    audioRef.current.volume = 0.1;
+    audioRef.current.onended = () => setPlay(false);
+
+    return () => {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+      audioRef.current = null;
+    };
+  }, [sound]);
+
+  const isActive = status.title === title;
+  const localIcon = isActive ? status.icon : status.alticon;
+  const localdesc = isActive ? status.description : "";
+
+  const changeDesc = (event) => {
     event.preventDefault();
-    const nextDescription =
-      alarm && status.description === ""
-        ? "Selected"
-        : !alarm && status.description === ""
-        ? "Connected"
-        : "";
-    setStatus({
-      description: nextDescription,
-      icon: status.icon === icons[0] ? icons[1] : icons[0],
-    });
-    if (!play) audio.play();
-    setPlay(true);
+    if (!play && !isActive) {
+      audioRef.current.play();
+      setPlay(true);
+    } else {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+      setPlay(false);
+    }
+    setStatus(title);
   };
 
   return (
-    <div className={`menu-item ${className}`} onClick={toggleDescription}>
-      <img src={status.icon} className="menu-item-icon" alt={`${title} icon`} />
+    <div className={`menu-item ${className}`} onClick={changeDesc}>
+      <img src={localIcon} className="menu-item-icon" alt={`${title} icon`} />
       <div className="menu-item-body">
         <div className="menu-item-title">{title}</div>
-        {status.description && (
-          <div className="menu-item-description">{status.description}</div>
+        {localdesc && (
+          <div className="menu-item-description">{localdesc}</div>
         )}
       </div>
-      <audio src={sound} id="audioPlayer"></audio>
     </div>
   );
 }
