@@ -43,6 +43,14 @@ const Info = () => {
               </a>
             </div>
           </div>
+          <h3 style={{ marginTop: 30 }}>How does the app work?</h3>
+          <p style={{ marginTop: 10 }}>- Using the connected tracking device, the app monitors your sleep</p>
+          <p style={{ marginTop: 10 }}>- During the given time interval, the app wakes you up when your sleep phase is the most optimal for waking up</p>
+          <p style={{ marginTop: 10 }}>- A longer time interval gives a better probability for an optimized wake-up time</p>
+          <img style={{marginTop: 10 }}src="sleep.png" width="100%" height="100%"></img>
+          <p style={{ fontSize: "14px", color: "#c8c8c8", marginTop: "8px" }}>
+            A demonstration of sleep cycles. The person woke up in the middle of a sleep cycle resulting in tiredness in the morning.<br/>
+            The app aims to wake the user at the end of a sleep cycle (indicated by the arrow) resulting in better wake-up quality.</p>
         </div>
       </div>
     </div>
