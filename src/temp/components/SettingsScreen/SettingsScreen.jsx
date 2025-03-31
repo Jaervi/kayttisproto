@@ -2,6 +2,7 @@ import React, { useSyncExternalStore } from "react";
 import "./SettingsScreen.css";
 import Menu from "../Menu/Menu";
 import "../Menu/Menu.css";
+import "../MenuItem/MenuItem.css";
 import MenuItem from "../MenuItem/MenuItem";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -19,6 +20,7 @@ export const Alarms = ({ style = "" }) => {
     icon: icons[0],
     alticon: icons[1]
   });
+  const [files, setFiles] = useState([]);
 
   const changeDevice = (newTitle) => {
     const deactivate = newTitle === alastatus.title;
@@ -32,30 +34,62 @@ export const Alarms = ({ style = "" }) => {
   };
 
   return (
-    <Menu title="Alarm sound" className={style}>
-      <MenuItem
-        title="Alarm 1"
-        description="Selected"
-        alarm={true}
-        sound="/kayttisproto/Alarm 1.mp3"
-        status={alastatus}
-        setStatus={changeDevice}
-      />
-      <MenuItem
-        title="Alarm 2"
-        alarm={true}
-        sound="/kayttisproto/Alarm 2.mp3"
-        status={alastatus}
-        setStatus={changeDevice}
-      />
-      <MenuItem
-        title="Alarm 3"
-        alarm={true}
-        sound="/kayttisproto/Alarm 3.mp3"
-        status={alastatus}
-        setStatus={changeDevice}
-      />
-    </Menu>
+    <div style={{width: "100%", overflow: "hidden", minHeight: "200px", padding: "8px 8px 8px", maxWidth: "317px"}}>
+      <Menu title="Alarm sound" className={style}>
+        <MenuItem
+          title="Alarm 1"
+          description="Selected"
+          alarm={true}
+          sound="/kayttisproto/Alarm 1.mp3"
+          status={alastatus}
+          setStatus={changeDevice}
+        />
+        <MenuItem
+          title="Alarm 2"
+          alarm={true}
+          sound="/kayttisproto/Alarm 2.mp3"
+          status={alastatus}
+          setStatus={changeDevice}
+        />
+        <MenuItem
+          title="Alarm 3"
+          alarm={true}
+          sound="/kayttisproto/Alarm 3.mp3"
+          status={alastatus}
+          setStatus={changeDevice}
+        />
+        {files.map((file) =>
+          <MenuItem
+            key={file.name}
+            title={file.name}
+            alarm={true}
+            sound={file}
+            status={alastatus}
+            setStatus={changeDevice}
+            isFile={true}
+          />
+        )}
+      </Menu>
+      <div className="menu-item" style={{ marginTop: "20px" }}>
+        <input
+          type="file"
+          id="audioUpload"
+          name="audioFile"
+          accept="audio/*"
+          style={{ display: "none" }}
+          onChange={(e) => {
+            setFiles(files.concat(e.target.files[0]))
+          }}
+        />
+        <label
+          htmlFor="audioUpload"
+          className="menu-item-body"
+          style={{ cursor: "pointer" }}
+        >
+          Upload custom alarm sound
+        </label>
+      </div>
+    </div>
   );
 };
 
@@ -71,8 +105,8 @@ function SettingsScreen() {
   const [devstatus, setDevStatus] = useState({
     title: "",
     description: "",
-    icon: icons[0],
-    alticon: icons[1]
+    icon: icons[1],
+    alticon: icons[0]
   });
 
   const changeDevice = (newTitle) => {

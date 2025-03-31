@@ -8,12 +8,17 @@ function MenuItem({
   sound,
   status,
   setStatus,
+  isFile = false,
 }) {
   const [play, setPlay] = useState(false);
   const audioRef = useRef(null);
 
   useEffect(() => {
-    audioRef.current = new Audio(sound);
+    if (isFile) {
+      audioRef.current = new Audio(URL.createObjectURL(sound));
+    } else {
+      audioRef.current = new Audio(sound);
+    }
     audioRef.current.volume = 0.1;
     audioRef.current.onended = () => setPlay(false);
 
