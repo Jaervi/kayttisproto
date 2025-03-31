@@ -6,11 +6,9 @@ import { useState } from "react";
 import Form from "react-bootstrap/Form";
 
 export const AlarmSetPage2 = ({ alarms, setAlarms }) => {
-  const [fromHour, setFromHour] = useState("08");
-  const [fromMin, setFromMin] = useState("00");
   const [untilHour, setUntilHour] = useState("09");
-  const [untilMin, setUntilMin] = useState("30");
-  const [minBefore, setMinBefore] = useState("00");
+  const [untilMin, setUntilMin] = useState("00");
+  const [minBefore, setMinBefore] = useState("30");
   const [check, setCheck] = useState(false);
   const handleMin = (event, handler, cur) => {
     event.preventDefault();
@@ -31,7 +29,7 @@ export const AlarmSetPage2 = ({ alarms, setAlarms }) => {
     setAlarms(
       alarms.concat({
         id: alarms.length,
-        start: check ? checkStart : `${fromHour}:${fromMin}`,
+        start: checkStart,
         end: `${untilHour}:${untilMin}`,
       })
     );
@@ -61,68 +59,24 @@ export const AlarmSetPage2 = ({ alarms, setAlarms }) => {
             >
               <Form.Label
                 className={styles.pickerHeader}
-                style={{ paddingLeft: "2rem", fontSize: 20 }}
+                style={{ paddingLeft: "24px", fontSize: 24, textDecoration: "underline" }}
               >
                 Enter wake up period
+                
               </Form.Label>
+              <span
+                  style={{fontSize: 24, textShadow: "1px 1px 0px rgb(0, 0, 0)", cursor: "pointer"}}
+                  onClick={() => setCheck(!check)}
+                >&#10068;</span>
+              {check && <div style={{paddingLeft: "24px", fontSize: 16, color: "#49454f", paddingTop: "10px", marginBottom: "-10px"}}>
+                Set the time you want to wake up at the latest below so that the alarm will ring at the latest at that time. 
+                Time interval spesifies the length of the period in which the app finds the optimal waking time and wakes you. 
+                The longer the time interval the higher the chance of finding the optimal waking time.
+                </div>}
               <div className={styles.timeLabel} style={{ fontSize: 20 }}>
-                From
+                Wake up at the latest:
               </div>
               <div className={styles.timeLabel}>From</div>
-              <div className={styles.inputSelection}>
-                <div
-                  className={styles.timeSelector}
-                  style={{ width: "15rem", display: "flex" }}
-                >
-                  <div className={styles.timeField}>
-                    <Form.Control
-                      className={styles.activeInputField}
-                      type="number"
-                      value={fromHour}
-                      max="23"
-                      min="00"
-                      onChange={({ target }) =>
-                        handleHour(setFromHour, target.value, fromHour)
-                      }
-                    />
-                    <Form.Text
-                      className={styles.timeLabel}
-                      style={{ marginTop: "10px", fontSize: 20 }}
-                    >
-                      Hour
-                    </Form.Text>
-                  </div>
-                </div>
-                <div className={styles.separator}>:</div>
-                <div
-                  className={styles.timeSelector}
-                  style={{ width: "15rem", display: "flex" }}
-                >
-                  <div className={styles.timeField}>
-                    <Form.Control
-                      className={styles.activeInputField}
-                      type="number"
-                      value={fromMin}
-                      max="59"
-                      min="00"
-                      onChange={(e) => handleMin(e, setFromMin, fromMin)}
-                    />
-                    <Form.Text
-                      className={styles.timeLabel}
-                      style={{ fontSize: 20 }}
-                    >
-                      Minute
-                    </Form.Text>
-                  </div>
-                </div>
-              </div>
-              <Form.Label
-                className={styles.timeLabelUntil}
-                style={{ paddingLeft: "2rem", fontSize: 20 }}
-              >
-                Until
-              </Form.Label>
-              <div className={styles.timeLabel}>Until</div>
               <div className={styles.inputSelection}>
                 <div
                   className={styles.timeSelector}
@@ -140,8 +94,7 @@ export const AlarmSetPage2 = ({ alarms, setAlarms }) => {
                       }
                     />
                     <Form.Text
-                      className={styles.timeLabel}
-                      style={{ fontSize: 20 }}
+                      style={{ marginTop: "10px", fontSize: 20, color: "#49454f", justifyContent: "center", display: "flex" }}
                     >
                       Hour
                     </Form.Text>
@@ -162,35 +115,34 @@ export const AlarmSetPage2 = ({ alarms, setAlarms }) => {
                       onChange={(e) => handleMin(e, setUntilMin, untilMin)}
                     />
                     <Form.Text
-                      className={styles.timeLabel}
-                      style={{ padding: "2rem", fontSize: 20 }}
-                    >
+                      style={{ marginTop: "10px", fontSize: 20, color: "#49454f", justifyContent: "center", display: "flex" }}
+                      >
                       Minute
                     </Form.Text>
                   </div>
                 </div>
               </div>
-              <div style={{ marginTop: -50, paddingLeft: "24px" }}>
-                <Form.Check
-                  style={{ color: check ? "#1e1e1e" : "" }}
-                  type="checkbox"
-                  id="checkbox"
-                  label={`  Choose X minutes before "Until" time`}
-                  onClick={() => setCheck(!check)}
+              <div className={styles.timeLabel2} style={{ fontSize: 20 }}>
+                  Time interval:
+                </div>
+              <div style={{ paddingTop: 10, marginTop: 0, paddingLeft: "24px" }}>
+                <Form.Control
+                  className={styles.activeInputField}
+                  style={{ width: "38%" }}
+                  type="number"
+                  value={minBefore}
+                  max="59"
+                  min="00"
+                  onChange={(e) => handleMin(e, setMinBefore, minBefore)}
                 />
-                {check && (
-                  <div style={{ paddingTop: 10 }}>
-                    <Form.Control
-                      className={styles.activeInputField}
-                      style={{ width: "38%" }}
-                      type="number"
-                      value={minBefore}
-                      max="59"
-                      min="00"
-                      onChange={(e) => handleMin(e, setMinBefore, minBefore)}
-                    />
-                  </div>
-                )}
+              </div>
+              <div style={{ marginLeft: "10%", marginTop: 10 }}>
+                <Form.Text
+                  className={styles.timeLabel}
+                  style={{ fontSize: 20 }}
+                >
+                  Minute
+                </Form.Text>
               </div>
               <div style={{ marginBottom: 50 }}></div>
               <div className={styles.actionButtons}>

@@ -65,6 +65,18 @@
   line-height: 1;
 }
 
+.timeLabel2 {
+  padding: 0 24px 0;
+  gap: 10px;
+  font-family: Roboto, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 12px;
+  color: #49454f;
+  font-weight: 500;
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+  line-height: 1;
+}
+
 .timeLabelUntil {
   z-index: 20;
   padding: 24px 24px 0;
@@ -89,7 +101,7 @@
 
 .pickerHeader {
   width: 100%;
-  padding: 24px 24px 0;
+  padding: 0 24px 0;
   gap: 10px;
   font-size: 12px;
   color: #49454f;
@@ -101,7 +113,7 @@
 .inputSelection {
   display: flex;
   margin-top: -20px;
-  min-height: 183px;
+  min-height: 140px;
   width: 100%;
   flex-direction: row;
   align-items: stretch;
